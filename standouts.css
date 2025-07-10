@@ -31,7 +31,7 @@
     grid-template-columns: 40% calc(60% - 40px);
     gap: 40px;
     width: 100%;
-    max-width: 1370;
+    max-width: 1370 px;
     margin: auto;
   }
 }

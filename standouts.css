@@ -26,11 +26,12 @@
 .standout_block_container {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 16px;
   background: #000;
 }
 @media screen and (min-width:740px) {
   .standout_block_container {
+    padding: 40px;
     display: grid;
     grid-template-columns: 40% calc(60% - 40px);
     gap: 40px;

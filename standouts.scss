@@ -25,7 +25,7 @@
 		grid-template-columns: 40% calc(60% - $margin_sm);
 		gap: $margin_sm;
 		width: 100%;
-		max-width: $mq_min_xxl px;
+		max-width: 1370px;
 		margin: auto;
 	}
 }

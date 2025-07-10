@@ -12,10 +12,14 @@
 @media screen and (min-width:740px) {
   .standouts_block {
     overflow: hidden;
-    padding: 40px;
     position: relative;
     background: #000;
     display: flex;
+  }
+}
+@media screen and (min-width:980px) {
+  .standouts_block {
+    padding: 40px;
   }
 }
 

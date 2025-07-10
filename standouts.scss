@@ -7,10 +7,13 @@
 .standouts_block {
 	@media #{$min_md} {
 		overflow: hidden;
-		padding: $margin_sm;
+		
 		position: relative;
 		background: $black;
 		display: flex;
+	}
+	@media #{$min_lg} {
+		padding: $margin_sm;
 	}
 }
 

@@ -1,0 +1,372 @@
+/* ========================================================================== */
+/* 1. Standouts Block (Main Container & Header)                               */
+/* ========================================================================== */
+@import 'variables';
+@import 'mixins';
+
+.standouts_block {
+	@media #{$min_md} {
+		overflow: hidden;
+		padding: $margin_sm;
+		position: relative;
+		background: $black;
+		display: flex;
+	}
+}
+
+.standout_block_container {
+	display: flex;
+	flex-direction: column;
+	padding: $margin_sm;
+	background: $black;
+
+	@media #{$min_md} {
+		display: grid;
+		grid-template-columns: 40% calc(60% - $margin_sm);
+		gap: $margin_sm;
+		width: 100%;
+		max-width: $mq_min_xxl;
+		margin: auto;
+	}
+}
+
+.standouts_block_header {
+	@media print {
+		padding: 0;
+	}
+}
+
+.standouts_block_background {
+	position: relative;
+
+	@media #{$min_md} {
+		@include cover;
+		filter: grayscale(50%);
+
+		&::before {
+			@include cover;
+			z-index: 2;
+			background: linear-gradient(to top,
+				rgba($black, 1),
+				rgba($black, 0.75));
+			content: "";
+		}
+	}
+
+	.fs-background-container {
+		.fs-background-media {
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+				display: block;
+			}
+		}
+	}
+}
+
+.standouts_block_header_inner {
+	position: relative;
+	z-index: 8;
+	display: flex;
+	flex-direction: column;
+	gap: $margin_sm;
+}
+
+.standouts_block_details {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	@media print {
+		margin-right: 0;
+		margin-left: 0;
+		padding: 0 20px;
+		text-align: left;
+	}
+}
+
+.standouts_block_title {
+	@include m;
+	font-weight: bold;
+	margin: 0;
+	color: $white;
+	font-size: $margin_sm;
+	line-height: 1;
+
+	@media #{$min_xl} {
+		font-size: 48px;
+	}
+}
+
+.standouts_block_caption {
+	@include m;
+	color: $yellow;
+	font-size: 20px;
+	font-style: italic;
+	line-height: 1.25;
+
+	@media #{$min_md} {
+		font-size: 22px;
+	}
+
+	p {
+		margin: 0;
+	}
+}
+
+.standouts_block_links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+
+	@media print {
+		display: none;
+	}
+}
+
+.standouts_block_link_wrapper {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.standouts_block_link {
+	@include button_fill(
+		$b: $yellow,
+		$hb: $white,
+		$c: $brown,
+		$hc: $red,
+		$h: true
+	);
+	display: flex;
+	height: 100%;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	border-radius: 2px;
+
+	@media #{$min_md} {
+		padding: 22px 48px 23px 48px;
+		box-shadow: 0px 0px 8px 0px rgba($black, 0.50);
+	}
+}
+
+.standouts_block_link [class*=label] {
+	font-size: 14px;
+	letter-spacing: 1px;
+	line-height: 1.25;
+}
+
+/* ========================================================================== */
+/* 2. Standouts List (Main Content)                                           */
+/* ========================================================================== */
+
+.standouts_wrapper {
+	@media print {
+		display: none;
+	}
+
+	@media #{$min_md} {
+		position: relative;
+		z-index: 4;
+		align-items: center;
+		display: flex;
+	}
+}
+
+.standouts {
+	@media #{$min_md} {
+		width: 100%;
+	}
+
+	@media #{$min_xl} {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.standout {
+	border-bottom: 1px solid rgba($white, .4);
+
+	@media #{$min_xl} {
+		width: 100%;
+		display: flex;
+	}
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.standout_link_icon_default,
+.standout_link [class*=icon],
+.standout_link_icon {
+	height: 16px;
+	width: 16px;
+}
+
+.standout_link {
+	@include button_plain(
+		$c: $white,
+		$hc: $yellow
+	);
+	text-decoration: none;
+	width: 100%;
+	position: relative;
+	align-items: center;
+	display: flex;
+	padding: 16px 0;
+	gap: 8px;
+
+	&:focus,
+	&:hover {
+		color: $yellow;
+
+		[class*="default"] {
+			opacity: 1;
+		}
+	}
+
+	[class*="label"] {
+		font-size: 16px;
+		letter-spacing: 0;
+		text-transform: none;
+	}
+
+	[class*="default"] {
+		color: $yellow;
+		fill: currentColor;
+	}
+
+	&:hover {
+		[class*="default"] {
+			display: none;
+		}
+	}
+
+	[class*="action"] {
+		fill: currentColor;
+	}
+}
+
+.standout_caption {
+	@include visually_hide;
+}
+
+/* ========================================================================== */
+/* 3. Standouts Backgrounds (Decorative/Contextual Images & Captions)         */
+/* ========================================================================== */
+
+.standout_background_container {
+	z-index: 1;
+
+	@media #{$min_md} {
+		border: 1px solid rgba($white, 0.4);
+		border-radius: 2px;
+	}
+
+	@media #{$min_lg} {
+		padding: $margin_sm;
+	}
+}
+
+.standout_background_items {
+	display: none;
+	visibility: hidden;
+
+	@media #{$min_md} {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		visibility: visible;
+		flex-direction: column;
+		pointer-events: none;
+		background-image: url(https://www.brown.edu/sites/default/files/styles/classic_sml/public/2019-04/20170901_COMM_firstreading12.jpg);
+		background-size: cover;
+		background-position: center;
+		height: 100%;
+		width: 100%;
+		border-radius: 2px;
+		box-shadow: 0px 0px 24px 0px rgba($black, 1);
+	}
+}
+
+.standout_background_item {
+	.standout_background {
+		.fs-background-container {
+			.fs-background-media {
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					object-position: center;
+					position: absolute;
+					display: block;
+				}
+			}
+		}
+	}
+
+	@media #{$min_md} {
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity .75s .215s,
+			visibility .75s .215s;
+	}
+
+	&.active {
+		@media #{$min_md} {
+			opacity: 1;
+			visibility: visible;
+			display: block;
+		}
+	}
+}
+
+.standout_background {
+	@media #{$min_md} {
+		@include cover;
+	}
+
+	&::before {
+		@media #{$min_md} {
+			height: 25%;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 2;
+			background:
+				linear-gradient(to top,
+					rgba($black, 1),
+					rgba($black, 0));
+			content: "";
+		}
+
+		.pinned & {
+			@media #{$min_xl} {
+				position: absolute;
+			}
+		}
+	}
+}
+
+.standout_background_caption {
+	@media #{$min_md} {
+		@include c(400);
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 4;
+		color: $white;
+		font-size: 18px;
+		line-height: 1.5;
+		margin: 0;
+		padding: $margin_sm;
+	}
+}
